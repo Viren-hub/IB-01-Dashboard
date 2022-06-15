@@ -1,0 +1,11 @@
+.main{
+    height: 400px;
+    width: 400px;
+    border:  2px solid slateblue;
+}
+.child{
+    height: 100px;
+    width: 300px;
+    background-color: red;
+    margin:10pxq;
+}
