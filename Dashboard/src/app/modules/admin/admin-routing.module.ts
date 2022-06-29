@@ -25,9 +25,6 @@ const routes: Routes = [
       {path:'create-profile',component:CreateProfileComponent},
       {path:'dashboard',component:DashboardComponent},
       {path:'',redirectTo:'/admin/dashboard',pathMatch:'full'}
-
-    
-
     ]
   }
 ];

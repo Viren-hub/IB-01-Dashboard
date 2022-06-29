@@ -117,8 +117,8 @@ label .fa {
 .fixed_header tbody {
     display: block;
     width: 100%;
-    overflow: auto;
-    height: 100px;
+    /* overflow: auto; 
+     height: auto; */
 }
 
 .fixed_header thead tr {

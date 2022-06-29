@@ -8,7 +8,6 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(private router :Router) {}
 
   setToken(token:string):void
