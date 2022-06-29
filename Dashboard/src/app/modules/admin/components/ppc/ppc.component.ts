@@ -9,22 +9,37 @@ import { SharedService } from 'src/app/shared.service';
 export class PpcComponent implements OnInit {
 
   
-  userData: any=[];
-userId:any=null;
+  userData: any;
+singleData:any=null;
+userId:any;
+
   constructor(private ppc:SharedService) { 
-    this.ppc.ppcData(5).subscribe((data: any)=>{
-      console.log(data);
-      this.userData= data.data;
-    })
+    this.ppc.getData().subscribe((dataSingle:any)=>{
+      this.userData=dataSingle.data;
+     // console.log(dataSingle.data);
+      
+    }
+    )
+
+    this.ppc.getSingleData('').subscribe((data: any)=>{
+      // this.name = data.data[1].P_Name;
+       
+      console.log(data)
+      this.userData= Object.values(data.data);
+         
+      })
   }
   getValue(value:any){
-    //console.log(value.P_Id);
-   this.userId=value.P_Id;
-   //console.log(this.userInfo)
+    
+   this.userId=value;
+   console.log(this.userId)
+   this.ppc.getSingleData(this.userId).subscribe((res)=>{
+    console.log(res);
+   })
 }
  
   
   ngOnInit(): void {
-    console.log(this.userId);
+  
   }
 }

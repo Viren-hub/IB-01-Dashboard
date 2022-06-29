@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import { PpcComponent } from '../ppc/ppc.component';
+
+
 
 @Component({
   selector: 'app-update-user',
@@ -11,7 +12,8 @@ export class UpdateUserComponent implements OnInit {
 
   userData: any=[];
 user:any;
-  constructor(private update:SharedService, private ppcC:PpcComponent) { 
+name:any;
+  constructor(private update:SharedService) { 
   //this.user=this.ppcC.userId;
   //console.log(this.user);
   
@@ -19,12 +21,9 @@ user:any;
   
   
   
-    //   this.update.ppcData().subscribe((data: any)=>{
-    
-  //     // console.log(Object.values(data.data[2]))
-  //     // this.userData= Object.values(data.data[2]);
-      
-  // })
+   
+   console.log("Name",this.name);
+   
 
 }
   ngOnInit(): void {

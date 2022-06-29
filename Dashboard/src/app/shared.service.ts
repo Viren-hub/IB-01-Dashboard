@@ -9,11 +9,14 @@ export class SharedService {
   constructor(private http: HttpClient) { 
 
   }
-  ppcData(uuid:any){
-
-let url=`http://localhost:3000/ppc/${uuid}`;
-return this.http.get(url);
-
-}
+  getData(){
+    let url="http://localhost:3000/ppc/";
+    return this.http.get(url);
+  }
+  getSingleData(uuid:any){
+    // this.userId=val;
+    let url=`http://localhost:3000/ppc/${uuid}`;
+    return this.http.get(url);
+  }
 
 }
