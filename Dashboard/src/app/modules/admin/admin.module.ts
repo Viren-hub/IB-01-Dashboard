@@ -14,7 +14,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserdataComponent } from './components/userdata/userdata.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -36,7 +37,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,ReactiveFormsModule
   ]
 })
 export class AdminModule { }

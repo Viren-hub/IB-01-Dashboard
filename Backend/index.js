@@ -97,3 +97,34 @@ app.get('/Rawdata/:id', (req, res) => {
 app.listen(3000, () => {
     console.log("server listen on port 3000")
 })
+
+app.post('/internship',(req,res)=>{
+    console.log(req.body,"created Data");
+    let ID=req.body.ID;
+    let Name=req.body.Name;
+    let Email=req.body.Email;
+    let Mobile=req.body.Mobile;
+    let Pending_fees=req.body.Pending_fees;
+    let Paid_fees=req.body.Paid_fees;
+
+
+    let qr= `insert into internship(ID,Name,Email,Mobile,Pending_fees, Paid_fees)
+                values('${ID}','${Name}','${Email}','${Mobile}','${Pending_fees}','${Paid_fees}') `
+
+    db.query(qr,(err,result)=>{
+        if(err){
+            console.log(err)
+        }
+        if(result.length>0){
+            res.send({
+                massage:'Data Insertd'
+            })
+            
+        }
+        else{
+            res.send({
+                massage:'wrong...'
+            })
+        }
+    })
+})

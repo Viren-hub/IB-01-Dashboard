@@ -33,8 +33,8 @@ userId:any;
     
    this.userId=value;
    console.log(this.userId)
-   this.ppc.getSingleData(this.userId).subscribe((res)=>{
-    console.log(res);
+   this.ppc.getSingleData(this.userId).subscribe((res:any)=>{
+    console.log(res.data[0].P_Name);
    })
 }
  
