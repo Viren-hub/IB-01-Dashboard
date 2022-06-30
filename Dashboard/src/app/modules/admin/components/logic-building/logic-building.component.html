@@ -5,11 +5,77 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Student Form</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+            <span aria-hidden="true">&times;</span>
+          </button>
             </div>
             <div class="modal-body">
-                <app-create-profile></app-create-profile>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div *ngIf="errorMassage" class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{errorMassage}}</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <form [formGroup]="studentForm" (ngSubmit)="userSubmit()">
+                    <div class="col-lg-8 m-4">
+                        <input class="form-control" formControlName="Id" type="text" placeholder="ID">
+                    </div>
+                    <div class="col-lg-8 m-4">
+                        <input class="form-control" formControlName="Name" type="text" placeholder="Name">
+                    </div>
+                    <div class="col-lg-8 m-4">
+                        <input class="form-control" formControlName="Email" type="text" placeholder="Email">
+                    </div>
+                    <div class="col-lg-8 m-4">
+                        <input class="form-control" formControlName="Mob" type="text" placeholder="Mobile">
+                    </div>
+                    <div class="col-lg-8 m-4">
+                        <input class="form-control" formControlName="PendingFees" type="text" placeholder="Pending_fees">
+                    </div>
+                    <div class="col-lg-8 m-4">
+                        <input class="form-control" formControlName="Paidfees" type="text" placeholder="Paid_fees">
+                    </div>
+                    <div class="col-lg-8 m-4">
+                        <button class="btn btn-primary">Create Stud</button>
+                    </div>
+
+                </form>
+
+
+
+
+
+
+
+
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -21,17 +87,18 @@
 
 
 <!-- <h1>
-    <strong class="ml-4 heading ">Logic-Building</strong>
-</h1> -->
+  <strong class="ml-4">Internship</strong>
+  </h1> -->
 <div class="col-md-12 fw-bold fs-1 mt-4" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-    Logic-Building
+    Logic Building
 </div>
 
 
 <br>
+
 <button type="button" class="btn btn-primary ml-4 mt-4" data-toggle="modal" data-target="#exampleModal">New Student</button>
 <br><br>
-<div class="table-responsive " id="table">
+<div class="table-responsive">
     <table class="table text-center table-striped">
         <thead>
             <tr>
@@ -45,8 +112,9 @@
         </thead>
         <tbody>
             <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1"
-                    style="text-decoration: none;"><td scope="ID">1</td>
+
+                <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
+                    <td scope="ID">1</td>
                 </a>
                 <td scope="Name">Mark</td>
                 <td scope="Mobile No.">9545215822</td>
@@ -54,72 +122,26 @@
                 <td scope="Pending Fees">3500</td>
                 <td scope="Paid Fees">3000</td>
             </tr>
-
             <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
+
+                <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
                     <td scope="ID">2</td>
                 </a>
-                <td>Mark</td>
-                <td>9545215822</td>
-                <td>abc@gmail.com</td>
-                <td>3500</td>
-                <td>3000</td>             
+                <td scope="Name">Raj</td>
+                <td scope="Mobile No.">9545215822</td>
+                <td scope="Email">raj@gmail.com</td>
+                <td scope="Pending Fees">3500</td>
+                <td scope="Paid Fees">3000</td>
             </tr>
-
             <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
+                <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
                     <td scope="ID">3</td>
                 </a>
-                <td>Mark</td>
-                <td>9545215822</td>
-                <td>abc@gmail.com</td>
-                <td>3500</td>
-                <td>3000</td>
+                <td scope="Name">Kalpesh</td>
+                <td scope="Mobile No.">9545215822</td>
+                <td scope="Email">kalpesh@gmail.com</td>
+                <td scope="Pending Fees">3500</td>
+                <td scope="Paid Fees">3000</td>
             </tr>
-            <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">4</td>
-                </a>
-                <td>Mark</td>
-                <td>9545215822</td>
-                <td>abc@gmail.com</td>
-                <td>3500</td>
-                <td>3000</td>
-            </tr>
-            <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">5</td>
-                </a>
-                <td>Mark</td>
-                <td>9545215822</td>
-                <td>abc@gmail.com</td>
-                <td>3500</td>
-                <td>3000</td>
-            </tr>
-
-            <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">6</td>
-                </a>
-                <td>Mark</td>
-                <td>9545215822</td>
-                <td>abc@gmail.com</td>
-                <td>3500</td>
-                <td>3000</td>
-            </tr>
-
-            <tr>
-                <a href=""  data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">7</td>
-                </a>
-                <td>Mark</td>
-                <td>9545215822</td>
-                <td>abc@gmail.com</td>
-                <td>3500</td>
-                <td>3000</td>
-            </tr>
-
-
         </tbody>
     </table>
-</div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
+
+import { FormGroup, FormControl, Validators }  from '@angular/forms';
+
 @Component({
   selector: 'app-logic-building',
   templateUrl: './logic-building.component.html',
@@ -8,16 +11,33 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class LogicBuildingComponent implements OnInit {
 
-  userData: any=[];
-
-  constructor() { 
-    // this.adm.ppcData().subscribe((data: any)=>{
-    //   console.log(data);
-    //   this.userData= data.data;
-    // })
+  constructor(private http:SharedService){
+    
   }
+  errorMassage:any;
+  studentForm= new FormGroup({
+    'Id': new FormControl('',Validators.required),
+    'Name': new FormControl('',Validators.required),
+    'Email': new FormControl('',Validators.required),
+    'Mob':new FormControl('',Validators.required),
+    'PendingFees': new FormControl('',Validators.required),
+    'Paidfees': new FormControl('',Validators.required)
 
+  })
+  userSubmit(){
+    if(this.studentForm.valid){
+   console.log(this.studentForm);
+   this.http.createLogic(this.studentForm.value).subscribe((res:any)=>{
+     
+   })
+    }
+    else{
+
+      this.errorMassage="All field required"
+    }
+  }
   ngOnInit(): void {
   }
+
 
 }
