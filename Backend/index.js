@@ -106,8 +106,8 @@ app.get('/Rawdata/:id', (req, res) => {
 //post Data
 
 
-app.listen(3001, () => {
-    console.log("server listen on port 3001")
+app.listen(3000, () => {
+    console.log("server listen on port 3000")
 })
 
 app.post('/internship', (req, res) => {
@@ -137,6 +137,7 @@ app.post('/internship', (req, res) => {
                 massage: 'wrong...'
             })
         }
+        server.close()
     })
 })
 
@@ -148,7 +149,7 @@ app.listen(3000, () => {
     console.log("server listen on port 3000")
 })
 
-app.post('/ppc', (req, res) => {
+app.post('/ppc/post', (req, res) => {
     console.log(req.body, "created Data");
     let P_Id = req.body.P_Id;
     let P_Name = req.body.P_Name;
@@ -160,6 +161,7 @@ app.post('/ppc', (req, res) => {
 
     let qr = `insert into ppc(P_Id,P_Name,P_Email,P_Mobile,P_PendingFees, P_PaidFees)
                 values('${P_Id}','${P_Name}','${P_Email}','${P_Mobile}','${P_PendingFees}','${P_PaidFees}') `
+
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -175,6 +177,7 @@ app.post('/ppc', (req, res) => {
                 massage: 'wrong...'
             })
         }
+        server.close()
     })
 })
 
@@ -213,5 +216,6 @@ app.post('/logicbuilding', (req, res) => {
                 massage: 'wrong...'
             })
         }
+        server.close()
     })
 })
