@@ -103,12 +103,8 @@ app.get('/Rawdata/:id', (req, res) => {
         }
     })
 });
-//post Data
 
-
-app.listen(3000, () => {
-    console.log("server listen on port 3000")
-})
+//post Data of Internship
 
 app.post('/internship', (req, res) => {
     console.log(req.body, "created Data");
@@ -141,13 +137,7 @@ app.post('/internship', (req, res) => {
     })
 })
 
-
 //post Data PPC
-
-
-app.listen(3000, () => {
-    console.log("server listen on port 3000")
-})
 
 app.post('/ppc/post', (req, res) => {
     console.log(req.body, "created Data");
@@ -181,16 +171,14 @@ app.post('/ppc/post', (req, res) => {
     })
 })
 
-
-
 //post Data Logic_Building
 
-app.listen(3002, () => {
-    console.log("server listen on port 3002")
+app.listen(3000, () => {
+    console.log("server listen on port 3000")
 })
 
 app.post('/logicbuilding', (req, res) => {
-    console.log(req.body, "created Data");
+
     let Id = req.body.Id;
     let Name = req.body.Name;
     let Email = req.body.Email;

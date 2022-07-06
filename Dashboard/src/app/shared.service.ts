@@ -20,7 +20,7 @@ export class SharedService {
     return this.http.get(url);
   }
   createIntern(data:any){
-    let url="http://localhost:3000/internship";
+    let url="http://localhost:3001/internship";
     return this.http.post(`${url}`,data);
   }
   createPpc(data1:any){
@@ -28,7 +28,7 @@ export class SharedService {
     return this.http.post(`${url}`,data1);
   }
   createLogic(data2:any){
-    let url="http://localhost:3000/logicbuilding";
+    let url="http://localhost:3001/logicbuilding";
     return this.http.post(`${url}`,data2);
   }
 }

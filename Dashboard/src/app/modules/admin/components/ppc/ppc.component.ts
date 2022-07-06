@@ -28,10 +28,15 @@ invalid: any;
   myForm!: NgForm;
 
 
-
+userAllData:any;
 
 constructor(private http:SharedService){
-    
+
+    this.http.getData().subscribe((data:any)=>
+    {
+      this.userAllData=data.data;
+      console.log("Using getdata",this.userAllData.length);
+    })
 }
 errorMassage:any;
 studentForm= new FormGroup({
@@ -70,7 +75,7 @@ alertSuccess()
     swal.fire("Thank You...",'You Submitted Successfully','success');
   }
  else{
-  alert('Failed to create');
+ 
  
  }
 }
