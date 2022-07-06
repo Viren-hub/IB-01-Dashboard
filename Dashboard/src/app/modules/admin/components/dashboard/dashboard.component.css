@@ -7,12 +7,14 @@
     border-radius: 3px;
     background-color: #4169E1;
     border: none;
+    color: white;
 }
 .button1{
     width: 90px;
     border-radius: 3px;
     background-color: #4169E1;
     border: none;
+    color: white;
 }
 @media (max-width: 780px){
     h3,h2, .text{
@@ -30,6 +32,7 @@
         text-transform: uppercase;
         font-size: 26px;
         margin-right: 158px;
+       
       
     }
     p{
@@ -43,6 +46,7 @@
         text-transform: uppercase;
         font-size: 26px;
         background-color: #4169E1;
+       
     }
     .dashboard{
         text-align: center;
