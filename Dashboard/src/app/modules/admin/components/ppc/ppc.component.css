@@ -9,6 +9,14 @@ input.ng-invalid.ng-touched{
     border: 1px solid red;
     box-shadow: 0 0 13px inset rgba(255, 0, 0, 0.09)
 }
-.card-body{
-    margin-left: 30px;
+
+.main1.span{
+    margin-left: 5px;
+}
+.row button{
+    display:inline-block;
+}
+.button1{
+    width: 130px;
+    margin-left: -10px;
 }
