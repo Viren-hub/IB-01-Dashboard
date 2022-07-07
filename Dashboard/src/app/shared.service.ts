@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
   ppcData: any;
+  post: any;
 
   constructor(private http: HttpClient) { 
 
@@ -31,4 +32,8 @@ export class SharedService {
     let url="http://localhost:3001/logicbuilding";
     return this.http.post(`${url}`,data2);
   }
+   uploadImage(data3:any){
+     let url="http://localhost:3000/ppc";
+   return this.http.post(`${url}`,data3);
+   }
 }

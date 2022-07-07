@@ -1,12 +1,13 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Student Form</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
 
@@ -38,8 +39,8 @@
                 <div *ngIf="errorMassage" class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>{{errorMassage}}</strong> You should check in on some of those fields below.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
 
 
@@ -51,7 +52,8 @@
                             <div *ngIf="f['P_Id'].errors && f['P_Id'].errors['P_Id']"></div>
 
 
-                            <div *ngIf="f['P_Id'].errors && f['P_Id'].errors['minlength']">ID should be 3 character.</div>
+                            <div *ngIf="f['P_Id'].errors && f['P_Id'].errors['minlength']">ID should be 3 character.
+                            </div>
                         </div>
 
 
@@ -91,7 +93,8 @@
 
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input class="form-control" formControlName="P_PendingFees" type="text" placeholder="Pending_fees">
+                        <input class="form-control" formControlName="P_PendingFees" type="text"
+                            placeholder="Pending_fees">
 
                         <div *ngIf="f['P_PendingFees'].touched && f['P_PendingFees'].invalid">
                             <div *ngIf="f['P_PendingFees'].errors && f['P_PendingFees'].errors['P_Id']"></div>
@@ -111,22 +114,52 @@
                             <div *ngIf="f['P_PaidFees'].errors && f['P_PaidFees'].errors">Field is required.</div>
                         </div>
 
+
+
+
+
+                        <div class="card-body cards">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <span><i class="fa fa-user fa-5x" aria-hidden="true"></i></span>
+                                    <p class="text">Choose your file to upload</p>
+                                    <input type="file" id="file" (change)="onFileSelected($event)">
+
+
+
+
+
+
+                                    <div *ngIf="f['P_Image'].touched && f['P_Image'].invalid">
+                                        <div *ngIf="f['P_Image'].errors && f['P_Image'].errors['P_Image']"></div>
+
+
+                                        <div *ngIf="f['P_Image'].errors && f['P_Image'].errors">Field is required.</div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 m-4">
+                            <button (click)="onUpload()" class="btn btn-primary" type="submit">Upload</button>
+                        </div>
+                        <div class="col-lg-8 m-4">
+                            <button (click)="alertSuccess()" class="btn btn-primary" type="submit">Create Stud</button>
+                        </div>
+
                     </div>
-                    <div class="col-lg-8 m-4">
-                        <button (click)="alertSuccess()" class="btn btn-primary" type="submit">Create Stud</button>
-                    </div>
+
+
+
+
+
+
+
+
+
 
                 </form>
-
-
-
-
-
-
-
-
-
-
 
             </div>
 
@@ -138,14 +171,16 @@
 <!-- <h1>
 <strong class="ml-4">Internship</strong>
 </h1> -->
-<div class="col-md-12 fw-bold fs-1 mt-4" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+<div class="col-md-12 fw-bold fs-1 mt-4"
+    style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
     Pre-Placement Campeign
 </div>
 
 
 <br>
 
-<button type="button" class="btn btn-primary ml-4 mt-4" data-toggle="modal" data-target="#exampleModal">New Student</button>
+<button type="button" class="btn btn-primary ml-4 mt-4" data-toggle="modal" data-target="#exampleModal">New
+    Student</button>
 <br><br>
 <div class="table-responsive">
     <table class="table text-center table-striped">

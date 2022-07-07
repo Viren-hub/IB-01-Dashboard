@@ -139,7 +139,7 @@ app.post('/internship', (req, res) => {
 
 //post Data PPC
 
-app.post('/ppc/post', (req, res) => {
+app.post('/Ppc', (req, res) => {
     console.log(req.body, "created Data");
     let P_Id = req.body.P_Id;
     let P_Name = req.body.P_Name;
@@ -147,10 +147,11 @@ app.post('/ppc/post', (req, res) => {
     let P_Mobile = req.body.P_Mobile;
     let P_PendingFees = req.body.P_PendingFees;
     let P_PaidFees = req.body.P_PaidFees;
+    let P_Image = req.body.P_Image;
 
 
-    let qr = `insert into ppc(P_Id,P_Name,P_Email,P_Mobile,P_PendingFees, P_PaidFees)
-                values('${P_Id}','${P_Name}','${P_Email}','${P_Mobile}','${P_PendingFees}','${P_PaidFees}') `
+    let qr = `insert into ppc(P_Id,P_Name,P_Email,P_Mobile,P_PendingFees, P_PaidFees,P_Image)
+                values('${P_Id}','${P_Name}','${P_Email}','${P_Mobile}','${P_PendingFees}','${P_PaidFees}','${P_Image}')) `
 
 
     db.query(qr, (err, result) => {

@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./ppc.component.css']
 })
 export class PpcComponent implements OnInit {
+  selectedFile: File= null!;
   [x: string]: any;
 
   
@@ -45,7 +46,8 @@ studentForm= new FormGroup({
   'P_Email': new FormControl('',Validators.required),
   'P_Mobile':new FormControl('',Validators.required),
   'P_PendingFees': new FormControl('',Validators.required),
-  'P_PaidFees': new FormControl('',Validators.required)
+  'P_PaidFees': new FormControl('',Validators.required),
+  'P_Image': new FormControl('',Validators.required)
 
 })
 
@@ -54,12 +56,13 @@ userSubmit(){
  console.log(this.studentForm);
  this.http.createPpc(this.studentForm.value).subscribe((res)=>{ 
  })
+ this.studentForm.reset();
   }
   else{
 
     this.errorMassage="All field required"
     console.log(this.errorMassage);
-    this.userSubmit()
+    this.userSubmit();
   }
   console.log(this.studentForm.value);
 
@@ -79,6 +82,18 @@ alertSuccess()
  
  }
 }
+onUpload(){
+  const fd= new FormData();
+  fd.append('image',this['selectedFile'],this.selectedFile.name);
+  this.http. uploadImage('http://localhost:3000/Ppc').subscribe((res:any)=>{
+    console.log(res);
+  });
+}
+onFileSelected(event: any){
+  this.selectedFile= <File>event.target.files[0];
+  
+}
+
 ngOnInit(): void {
 
   
