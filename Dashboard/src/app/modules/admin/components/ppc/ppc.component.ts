@@ -8,6 +8,7 @@ import swal from 'sweetalert2';
 
 
 
+
 import { Observable, switchAll } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -26,7 +27,7 @@ userId:any;
 invalid: any;
   @ViewChild('myForm')
   myForm!: NgForm;
-
+  
 
 userAllData:any;
 
@@ -52,8 +53,10 @@ studentForm= new FormGroup({
 userSubmit(){
   if(this.studentForm.valid){
  console.log(this.studentForm);
+ 
  this.http.createPpc(this.studentForm.value).subscribe((res)=>{ 
  })
+ this.studentForm.reset();
   }
   else{
 
@@ -73,11 +76,14 @@ alertSuccess()
 {
   if(this.studentForm.valid){
     swal.fire("Thank You...",'You Submitted Successfully','success');
+    
+    
   }
  else{
  
  
  }
+ 
 }
 ngOnInit(): void {
 

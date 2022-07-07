@@ -140,7 +140,7 @@ app.post('/internship', (req, res) => {
 //post Data PPC
 
 app.post('/ppc/post', (req, res) => {
-    console.log(req.body, "created Data");
+    
     let P_Id = req.body.P_Id;
     let P_Name = req.body.P_Name;
     let P_Email = req.body.P_Email;
