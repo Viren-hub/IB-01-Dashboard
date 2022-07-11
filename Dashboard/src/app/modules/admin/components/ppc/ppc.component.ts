@@ -21,6 +21,11 @@ export class PpcComponent implements OnInit {
   selectedFile: File= null!;
   [x: string]: any;
 
+  // user : Users [] = [];
+  // name:any;
+
+  p: number = 1;
+
   
   userData: any;
 singleData:any=null;
@@ -56,7 +61,7 @@ userSubmit(){
   if(this.studentForm.valid){
  console.log(this.studentForm);
  
- this.http.createPpc(this.studentForm.value).subscribe((res)=>{ 
+ this.http.createPpc(this.studentForm.value).subscribe(()=>{ 
  })
  this.studentForm.reset();
   }
@@ -77,13 +82,9 @@ get f(){
 alertSuccess()
 {
   if(this.studentForm.valid){
-    swal.fire("Thank You...",'You Submitted Successfully','success');
-    
-    
+    swal.fire("Thank You...",'You Submitted Successfully','success');   
   }
  else{
- 
- 
  }
  
 }
@@ -99,8 +100,31 @@ onFileSelected(event: any){
   
 }
 
-ngOnInit(): void {
+ngOnInit(): void { 
+//   this['rs'].getUsers().subscribe((Response: any) =>{
+//   this.user = Response ;
+// })
+}
 
-  
+// Search(){
+// if(this.name == ""){
+//   this.ngOnInit()
+// }
+// else{
+//   this.user = this.user.filter(res =>{
+//     return res.name.toLocaleLowerCase.match(this.name.toLocaleLowerCase());
+//   })
+// }
+// }
+
+
+
+
+key : string = '';
+reverse: boolean =false;
+
+sort(key:any){
+this.key = key;
+this.reverse = !this.reverse
 }
 }
