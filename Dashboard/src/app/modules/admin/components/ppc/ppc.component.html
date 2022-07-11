@@ -10,54 +10,20 @@
                 </button>
             </div>
             <div class="modal-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div *ngIf="errorMassage" class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>{{errorMassage}}</strong> You should check in on some of those fields below.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-
-
                 <form [formGroup]="studentForm" (ngSubmit)="userSubmit()">
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="P_Id" type="text" placeholder="ID">
                         <div *ngIf="f['P_Id'].touched && f['P_Id'].invalid">
                             <div *ngIf="f['P_Id'].errors && f['P_Id'].errors['P_Id']"></div>
-
-
                             <div *ngIf="f['P_Id'].errors && f['P_Id'].errors['minlength']">ID should be 3 character.
                             </div>
                         </div>
-
-
-
                     </div>
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="P_Name" type="text" placeholder="Name">
@@ -79,7 +45,7 @@
 
                             <div *ngIf="f['P_Email'].errors && f['P_Email'].errors">Email ID is required.</div>
                         </div>
-                     
+
                     </div>
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="P_Mobile" type="text" placeholder="Mobile">
@@ -98,65 +64,50 @@
 
                         <div *ngIf="f['P_PendingFees'].touched && f['P_PendingFees'].invalid">
                             <div *ngIf="f['P_PendingFees'].errors && f['P_PendingFees'].errors['P_Id']"></div>
-
-
                             <div *ngIf="f['P_PendingFees'].errors && f['P_PendingFees'].errors">Field is required.</div>
                         </div>
 
                     </div>
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="P_PaidFees" type="text" placeholder="Paid_fees">
-
                         <div *ngIf="f['P_PaidFees'].touched && f['P_PaidFees'].invalid">
                             <div *ngIf="f['P_PaidFees'].errors && f['P_PaidFees'].errors['P_Id']"></div>
-
-
                             <div *ngIf="f['P_PaidFees'].errors && f['P_PaidFees'].errors">Field is required.</div>
                         </div>
 
-
-
-
-                          <div class="main1">
-                        <div class="card-body cards">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <span><i class="fa fa-user fa-5x" aria-hidden="true"></i></span>
-                                    <p class="text">Choose your file to upload</p>
-                                    <input type="file" id="file" (change)="onFileSelected($event)">
-
-
-
-
-
-
-                                    <div *ngIf="f['P_Image'].touched && f['P_Image'].invalid">
-                                        <div *ngIf="f['P_Image'].errors && f['P_Image'].errors['P_Image']"></div>
-
-
-                                        <div *ngIf="f['P_Image'].errors && f['P_Image'].errors">Field is required.</div>
+                        <div class="main1">
+                            <div class="card-body cards">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <span><i class="fa fa-user fa-5x" aria-hidden="true"></i></span>
+                                        <p class="text">Choose your file to upload</p>
+                                        <input type="file" id="file" (change)="onFileSelected($event)">
+                                        <div *ngIf="f['P_Image'].touched && f['P_Image'].invalid">
+                                            <div *ngIf="f['P_Image'].errors && f['P_Image'].errors['P_Image']"></div>
+                                            <div *ngIf="f['P_Image'].errors && f['P_Image'].errors">Field is required.
+                                            </div>
+                                        </div>
                                     </div>
-
-
                                 </div>
                             </div>
+                            <div class="row">
+
+                                <div class="col-lg-4 m-4">
+
+                                    <button (click)="onUpload()" class="btn btn-primary button1 "
+                                        type="submit">Upload</button>
+                                </div>
+                                <div class="col-lg-4 m-4">
+
+                                    <button (click)="alertSuccess()" class="btn btn-primary button1"
+                                        type="submit">Create Student</button>
+                                </div>
+
+
+                            </div>
+
                         </div>
-                        <div class="row">
-
-                        <div class="col-lg-4 m-4">
-
-                            <button (click)="onUpload()" class="btn btn-primary button1 " type="submit">Upload</button>
-                      </div>
-                        <div class="col-lg-4 m-4">
-                      
-                            <button (click)="alertSuccess()" class="btn btn-primary button1" type="submit">Create Student</button>
-                        </div>
-                        
-
                     </div>
-                  
-                    </div>
-                     </div>
                 </form>
 
             </div>
@@ -164,6 +115,51 @@
         </div>
     </div>
 </div>
+<!-- ****************************************************************************************** -->
+<!-- modal for updating and displaying specific student info -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Student Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h3>ID </h3>
+                    <h3>Name </h3>
+                    <h3>Mobile Number </h3>
+                    <h3>Email ID </h3>
+                    <h3>Pending Fees</h3>
+                    <h3>Paid Fees</h3>
+                  </div>
+                  
+                  <div class="col">
+                    <h3>{{singleData && singleData[0].P_Id}}</h3>
+                    <h3>{{singleData && singleData[0].P_Name}}</h3>
+                    <h3>{{singleData && singleData[0].P_Mobile}}</h3>
+                    <h3>{{singleData && singleData[0].P_Email}}</h3>
+                    <h3>{{singleData && singleData[0].P_PendingFees}}</h3>
+                    <h3>{{singleData && singleData[0].P_PaidFees}}</h3>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update user</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ****************************************************************************************** -->
 
 
 <!-- <h1>
@@ -194,10 +190,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of userAllData">
+                
 
-                <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">{{user.P_Id}}</td>
-                </a>
+                
+                <td scope="ID" id="id1" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;" (click)="getVal(user.P_Id)" >{{user.P_Id}}</td>
+            
                 <td scope="Name">{{user.P_Name}}</td>
                 <td scope="Mobile No.">{{user.P_Mobile}}</td>
                 <td scope="Email">{{user.P_Email}}</td>

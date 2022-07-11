@@ -13,7 +13,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'dashboard',
+    database: 'Dashboard',
     port: 3306
 })
 
@@ -30,9 +30,9 @@ db.connect(err => {
 
 //fetch data from server
 //here "ppc" is the table name which is in databse
-app.get('/Ppc/:P_id', (req, res) => {
+app.get('/ppc/:P_id', (req, res) => {
     let uid = req.params.P_id;
-    let qr = `SELECT * FROM Ppc where P_id=${uid}`;
+    let qr = `SELECT * FROM ppc where P_id=${uid}`;
 
     db.query(qr, (err, result) => {
         if (err) { console.log(err) } else if (result.length > 0) {
@@ -45,9 +45,9 @@ app.get('/Ppc/:P_id', (req, res) => {
 });
 
 
-app.get('/Ppc', (req, res) => {
+app.get('/ppc', (req, res) => {
     // let uid = req.params.P_id;
-    let qr = `SELECT * FROM Ppc`;
+    let qr = `SELECT * FROM ppc`;
 
     db.query(qr, (err, result) => {
         if (err) { console.log(err) } else if (result.length > 0) {

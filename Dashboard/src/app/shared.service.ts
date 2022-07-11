@@ -19,6 +19,7 @@ export class SharedService {
     // this.userId=val;
     let url=`http://localhost:3000/ppc/${uuid}`;
     return this.http.get(url);
+    
   }
   createIntern(data:any){
     let url="http://localhost:3001/internship";

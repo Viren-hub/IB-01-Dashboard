@@ -20,3 +20,20 @@ input.ng-invalid.ng-touched{
     width: 130px;
     margin-left: -10px;
 }
+
+#exampleModalLabel{
+    font-size: 20px;
+}
+
+
+#id1{
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    margin: 20px;
+    width:100%;
+    justify-content: center;
+}
+

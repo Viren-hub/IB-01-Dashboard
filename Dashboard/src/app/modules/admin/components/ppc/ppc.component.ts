@@ -1,16 +1,10 @@
 import { SharedService } from 'src/app/shared.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-
-
 import { FormGroup, FormControl, Validators, NgForm }  from '@angular/forms';
 import swal from 'sweetalert2';
-
-
-
-
 import { Observable, switchAll } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { getValueInRange } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-ppc',
@@ -23,7 +17,7 @@ export class PpcComponent implements OnInit {
 
   
   userData: any;
-singleData:any=null;
+singleData:any;
 userId:any;
 invalid: any;
   @ViewChild('myForm')
@@ -37,6 +31,7 @@ constructor(private http:SharedService){
     this.http.getData().subscribe((data:any)=>
     {
       this.userAllData=data.data;
+      console.log(data.data);
       console.log("Using getdata",this.userAllData.length);
     })
 }
@@ -98,6 +93,18 @@ onFileSelected(event: any){
   this.selectedFile= <File>event.target.files[0];
   
 }
+
+getVal(value:any){
+  // console.log(value);
+  this.http.getSingleData(value).subscribe((data:any)=>{
+      this.singleData=data.data;
+      // console.log(this.singleData[0].P_Name);
+      
+  })
+}
+
+
+
 
 ngOnInit(): void {
 
