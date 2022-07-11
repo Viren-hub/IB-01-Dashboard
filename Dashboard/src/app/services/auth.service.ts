@@ -8,6 +8,9 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  getUsers() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private router :Router) {}
 
   setToken(token:string):void

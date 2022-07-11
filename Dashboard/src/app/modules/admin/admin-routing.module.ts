@@ -11,6 +11,8 @@ import { RawdataComponent } from './components/rawdata/rawdata.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserdataComponent } from './components/userdata/userdata.component';
 
+
+
 const routes: Routes = [
   {
     path:'',component:AdminDashboardComponent,

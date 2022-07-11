@@ -176,24 +176,27 @@
 <button type="button" class="btn btn-primary ml-4 mt-4" data-toggle="modal" data-target="#exampleModal">New
     Student</button>
 <br><br>
+<!-- <nav class="navbar">
+    <input class="form-control" type="text" name="P_Name" [(ngModel)] = "name" (ngModelChange)="Search()"
+    placeholder="Enter first name to Search">
+</nav> -->
 <div class="table-responsive">
     <table class="table text-center table-striped">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mobile No.</th>
-                <th scope="col">Email</th>
-                <th scope="col">Pending Fees</th>
-                <th scope="col">Paid Fees</th>
+                <th scope="col">ID  </th>
+                <th scope="col">Name  </th>
+                <th scope="col">Mobile No. </th>
+                <th scope="col">Email  </th>
+                <th (click)="sort('Pending_fees')" scope="col">Pending Fees &nbsp;<i class="fa fa-sort"></i> </th>
+                <th (click)="sort('Paid_fees')" scope="col">Paid Fees &nbsp;<i class="fa fa-sort"></i> </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of userAllData">
-                
+            <tr *ngFor="let user of userAllData | orderBy: key: reverse | paginate: {itemsPerPage: 6, currentPage:p};">
 
                 
-                <td scope="ID" id="id1" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;" (click)="getVal(user.P_Id)" >{{user.P_Id}}</td>
+                <td scope="ID" id="id1" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;" >{{user.P_Id}}</td>
             
                 <td scope="Name">{{user.P_Name}}</td>
                 <td scope="Mobile No.">{{user.P_Mobile}}</td>
@@ -201,6 +204,6 @@
                 <td scope="Pending Fees">{{user.P_PendingFees}}</td>
                 <td scope="Paid Fees">{{user.P_PaidFees}}</td>
             </tr>
-
-        </tbody>
+        </tbody>      
     </table>
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>

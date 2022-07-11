@@ -15,6 +15,11 @@ export class PpcComponent implements OnInit {
   selectedFile: File= null!;
   [x: string]: any;
 
+  // user : Users [] = [];
+  // name:any;
+
+  p: number = 1;
+
   
   userData: any;
 singleData:any;
@@ -35,6 +40,19 @@ constructor(private http:SharedService){
       console.log("Using getdata",this.userAllData.length);
     })
 }
+
+// ***********************************************************************************************************
+  getVal(value:any){
+    console.log(value);
+    this.http.getSingleData(value).subscribe((data :any)=>{
+      this.singleData=data.data;
+      console.log(this.singleData[0].P_Mobile);
+
+    })
+
+  }
+// ***********************************************************************************************************
+
 errorMassage:any;
 studentForm= new FormGroup({
   'P_Id': new FormControl('',Validators.required),
@@ -51,7 +69,7 @@ userSubmit(){
   if(this.studentForm.valid){
  console.log(this.studentForm);
  
- this.http.createPpc(this.studentForm.value).subscribe((res)=>{ 
+ this.http.createPpc(this.studentForm.value).subscribe(()=>{ 
  })
  this.studentForm.reset();
   }
@@ -72,13 +90,9 @@ get f(){
 alertSuccess()
 {
   if(this.studentForm.valid){
-    swal.fire("Thank You...",'You Submitted Successfully','success');
-    
-    
+    swal.fire("Thank You...",'You Submitted Successfully','success');   
   }
  else{
- 
- 
  }
  
 }
@@ -94,20 +108,31 @@ onFileSelected(event: any){
   
 }
 
-getVal(value:any){
-  // console.log(value);
-  this.http.getSingleData(value).subscribe((data:any)=>{
-      this.singleData=data.data;
-      // console.log(this.singleData[0].P_Name);
-      
-  })
+ngOnInit(): void { 
+//   this['rs'].getUsers().subscribe((Response: any) =>{
+//   this.user = Response ;
+// })
 }
 
+// Search(){
+// if(this.name == ""){
+//   this.ngOnInit()
+// }
+// else{
+//   this.user = this.user.filter(res =>{
+//     return res.name.toLocaleLowerCase.match(this.name.toLocaleLowerCase());
+//   })
+// }
+// }
 
 
 
-ngOnInit(): void {
 
-  
+key : string = '';
+reverse: boolean =false;
+
+sort(key:any){
+this.key = key;
+this.reverse = !this.reverse
 }
 }
