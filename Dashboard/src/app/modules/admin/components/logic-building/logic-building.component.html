@@ -1,31 +1,15 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Student Form</h5>
+                <h1 class="modal-title" id="exampleModalLabel">Student Form</h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -38,110 +22,175 @@
                 <div *ngIf="errorMassage" class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>{{errorMassage}}</strong> You should check in on some of those fields below.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+
+
+
                 <form [formGroup]="studentForm" (ngSubmit)="userSubmit()">
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="Id" type="text" placeholder="ID">
+                        <div *ngIf="f['Id'].touched && f['Id'].invalid">
+                            <div *ngIf="f['Id'].errors && f['Id'].errors['Id']"></div>
+
+
+                            <div *ngIf="f['Id'].errors && f['Id'].errors['minlength']">ID should be 3 character.
+                            </div>
+                        </div>
+
+
+
                     </div>
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="Name" type="text" placeholder="Name">
+
+                        <div *ngIf="f['Name'].touched && f['Name'].invalid">
+                            <div *ngIf="f['Name'].errors && f['Name'].errors['Name']"></div>
+
+
+                            <div *ngIf="f['Name'].errors && f['Name'].errors">Name is required.</div>
+                        </div>
+
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input class="form-control" formControlName="Email" type="text" placeholder="Email">
+                        <input class="form-control" formControlName="Email" type="email" placeholder="Email">
+
+                        <div *ngIf="f['Email'].touched && f['Email'].invalid">
+                            <div *ngIf="f['Email'].errors && f['Email'].errors['Email']"> </div>
+
+
+                            <div *ngIf="f['Email'].errors && f['Email'].errors">Email ID is required.</div>
+                        </div>
+                     
                     </div>
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="Mob" type="text" placeholder="Mobile">
+
+                        <div *ngIf="f['Mob'].touched && f['Mob'].invalid">
+                            <div *ngIf="f['Mob'].errors && f['Mob'].errors['Mob']"></div>
+
+
+                            <div *ngIf="f['Mob'].errors && f['Mob'].errors">Mobile Number is required.</div>
+                        </div>
+
                     </div>
                     <div class="col-lg-8 m-4">
-                        <input class="form-control" formControlName="PendingFees" type="text" placeholder="Pending_fees">
+                        <input class="form-control" formControlName="PendingFees" type="text"
+                            placeholder="Pending_fees">
+
+                        <div *ngIf="f['PendingFees'].touched && f['PendingFees'].invalid">
+                            <div *ngIf="f['PendingFees'].errors && f['PendingFees'].errors['PendingFees']"></div>
+
+
+                            <div *ngIf="f['PendingFees'].errors && f['PendingFees'].errors">Field is required.</div>
+                        </div>
+
                     </div>
                     <div class="col-lg-8 m-4">
                         <input class="form-control" formControlName="Paidfees" type="text" placeholder="Paid_fees">
-                    </div>
-                    <div class="col-lg-8 m-4">
-                        <button class="btn btn-primary">Create Stud</button>
-                    </div>
 
+                        <div *ngIf="f['Paidfees'].touched && f['Paidfees'].invalid">
+                            <div *ngIf="f['Paidfees'].errors && f['Paidfees'].errors['Paidfees']"></div>
+
+
+                            <div *ngIf="f['Paidfees'].errors && f['Paidfees'].errors">Field is required.</div>
+                        </div>
+
+
+
+
+                          <div class="main1">
+                        <!-- <div class="card-body cards">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <span><i class="fa fa-user fa-5x" aria-hidden="true"></i></span>
+                                    <p class="text">Choose your file to upload</p>
+                                    <input type="file" id="file" (change)="onFileSelected($event)">
+
+
+
+
+
+
+                                    <div *ngIf="f['Image'].touched && f['Image'].invalid">
+                                        <div *ngIf="f['Image'].errors && f['Image'].errors['Image']"></div>
+
+
+                                        <div *ngIf="f['Image'].errors && f['Image'].errors">Field is required.</div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row">
+
+                        <div class="col-lg-4 m-4">
+
+                            <button (click)="onUpload()" class="btn btn-primary button1 " type="submit">Upload</button>
+                      </div>
+                        <div class="col-lg-4 m-4">
+                      
+                            <button (click)="alertSuccess()" class="btn btn-primary button1" type="submit">Create Student</button>
+                        </div>
+                        
+
+                    </div>
+                  
+                    </div>
+                     </div>
                 </form>
 
-
-
-
-
-
-
-
-
-
-
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-            </div>
         </div>
     </div>
 </div>
 
 
 <!-- <h1>
-  <strong class="ml-4">Internship</strong>
-  </h1> -->
-<div class="col-md-12 fw-bold fs-1 mt-4" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-    Logic Building
+<strong class="ml-4">Internship</strong>
+</h1> -->
+<div class="col-md-12 fw-bold fs-1 mt-4"
+    style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+  Logic-Building
 </div>
 
 
 <br>
 
-<button type="button" class="btn btn-primary ml-4 mt-4" data-toggle="modal" data-target="#exampleModal">New Student</button>
+<button type="button" class="btn btn-primary ml-4 mt-4" data-toggle="modal" data-target="#exampleModal">New
+    Student</button>
 <br><br>
+<!-- <nav class="navbar">
+    <input class="form-control" type="text" name="P_Name" [(ngModel)] = "name" (ngModelChange)="Search()"
+    placeholder="Enter first name to Search">
+</nav> -->
 <div class="table-responsive">
     <table class="table text-center table-striped">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mobile No.</th>
-                <th scope="col">Email</th>
-                <th scope="col">Pending Fees</th>
-                <th scope="col">Paid Fees</th>
+                <th scope="col">ID  </th>
+                <th scope="col">Name  </th>
+                <th scope="col">Mobile No. </th>
+                <th scope="col">Email  </th>
+                <th (click)="sort('Pending_fees')" scope="col">Pending Fees &nbsp;<i class="fa fa-sort"></i> </th>
+                <th (click)="sort('Paid_fees')" scope="col">Paid Fees &nbsp;<i class="fa fa-sort"></i> </th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let user of userAllData | orderBy: key: reverse | paginate: {itemsPerPage: 6, currentPage:p};">
 
                 <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">1</td>
+                    <td scope="ID">{{user.Id}}</td>
                 </a>
-                <td scope="Name">Mark</td>
-                <td scope="Mobile No.">9545215822</td>
-                <td scope="Email">abc@gmail.com</td>
-                <td scope="Pending Fees">3500</td>
-                <td scope="Paid Fees">3000</td>
+                <td scope="Name">{{user.Name}}</td>
+                <td scope="Mobile No.">{{user.Mob}}</td>
+                <td scope="Email">{{user.Email}}</td>
+                <td scope="Pending Fees">{{user.PendingFees}}</td>
+                <td scope="Paid Fees">{{user.Paidfees}}</td>
             </tr>
-            <tr>
-
-                <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">2</td>
-                </a>
-                <td scope="Name">Raj</td>
-                <td scope="Mobile No.">9545215822</td>
-                <td scope="Email">raj@gmail.com</td>
-                <td scope="Pending Fees">3500</td>
-                <td scope="Paid Fees">3000</td>
-            </tr>
-            <tr>
-                <a href="" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;">
-                    <td scope="ID">3</td>
-                </a>
-                <td scope="Name">Kalpesh</td>
-                <td scope="Mobile No.">9545215822</td>
-                <td scope="Email">kalpesh@gmail.com</td>
-                <td scope="Pending Fees">3500</td>
-                <td scope="Paid Fees">3000</td>
-            </tr>
-        </tbody>
+        </tbody>      
     </table>
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>
