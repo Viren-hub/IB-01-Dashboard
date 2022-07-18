@@ -41,7 +41,6 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     CommonModule,
     AdminRoutingModule,
     FormsModule,ReactiveFormsModule,
-    // Ng2SearchPipeModule,
     NgxPaginationModule,
     Ng2OrderModule
   ]

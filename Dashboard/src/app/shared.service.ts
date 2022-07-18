@@ -15,6 +15,14 @@ export class SharedService {
     let url="http://localhost:3000/ppc/";
     return this.http.get(url);
   }
+  logicData(){
+    let url="http://localhost:3000/logic_building";
+    return this.http.get(url);
+  }
+  internData(){
+    let url="http://localhost:3000/internship";
+    return this.http.get(url);
+  }
   getSingleData(uuid:any){
     // this.userId=val;
     let url=`http://localhost:3000/ppc/${uuid}`;
@@ -30,20 +38,21 @@ export class SharedService {
     return this.http.post(`${url}`,data1);
   }
   createLogic(data2:any){
-    let url="http://localhost:3001/logicbuilding";
+    let url="http://localhost:3000/logic_building";
     return this.http.post(`${url}`,data2);
   }
-   uploadImage(data3:any){
+   uploadImagePpc(data3:any){
      let url="http://localhost:3000/ppc";
    return this.http.post(`${url}`,data3);
    }
-
-   updateChanges(id:any,updateData:any){
-
-    let url=`http://localhost:3000/ppc/${id}`;
-    return this.http.post(`${url}`,updateData);
+   uploadImageLogic(data4:any){
+    let url="http://localhost:3000/logic_building";
+  return this.http.post(`${url}`,data4);
+  }
+  uploadImageIntern(data5:any){
+    let url="http://localhost:3000/internship";
+  return this.http.post(`${url}`,data5);
   }
 
   
 }
-

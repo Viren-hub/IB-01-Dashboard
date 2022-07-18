@@ -75,8 +75,8 @@ app.get('/internship', (req, res) => {
     })
 });
 
-app.get('/logicbuilding', (req, res) => {
-    let qr = ' SELECT * FROM logicbuilding';
+app.get('/logic_building', (req, res) => {
+    let qr = ' SELECT * FROM logic_building';
     db.query(qr, (err, result) => {
         if (err) { console.log(err) } else if (result.length > 0) {
             res.send({
@@ -116,12 +116,12 @@ app.post('/internship', (req, res) => {
     let Name = req.body.Name;
     let Email = req.body.Email;
     let Mobile = req.body.Mobile;
-    let Pending_fees = req.body.Pending_fees;
-    let Paid_fees = req.body.Paid_fees;
+    let Pending_Fees = req.body.Pending_Fees;
+    let Paid_Fees = req.body.Paid_Fees;
 
 
-    let qr = `insert into internship(ID,Name,Email,Mobile,Pending_fees, Paid_fees)
-                values('${ID}','${Name}','${Email}','${Mobile}','${Pending_fees}','${Paid_fees}') `
+    let qr = `insert into internship(ID,Name,Email,Mobile,Pending_Fees, Paid_Fees)
+                values('${ID}','${Name}','${Email}','${Mobile}','${Pending_Fees}','${Paid_Fees}') `
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -212,7 +212,12 @@ app.post('/ppc/post', (req, res) => {
 })
 
 //post Data Logic_Building
-app.post('/logicbuilding', (req, res) => {
+
+app.listen(3000, () => {
+    console.log("server listen on port 3000")
+})
+
+app.post('/logic_building', (req, res) => {
 
     let Id = req.body.Id;
     let Name = req.body.Name;
@@ -222,7 +227,7 @@ app.post('/logicbuilding', (req, res) => {
     let Paidfees = req.body.Paidfees;
 
 
-    let qr = `insert into logicbuilding(Id,Name,Email,Mob,PendingFees, Paidfees)
+    let qr = `insert into logic_building(Id,Name,Email,Mob,PendingFees, Paidfees)
                 values('${Id}','${Name}','${Email}','${Mob}','${PendingFees}','${Paidfees}') `
 
     db.query(qr, (err, result) => {

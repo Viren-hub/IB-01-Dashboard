@@ -133,7 +133,7 @@ alertSuccess()
 onUpload(){
   const fd= new FormData();
   fd.append('image',this['selectedFile'],this.selectedFile.name);
-  this.http. uploadImage('http://localhost:3000/Ppc').subscribe((res:any)=>{
+  this.http. uploadImagePpc('http://localhost:3000/Ppc').subscribe((res:any)=>{
     console.log(res);
   });
 }
