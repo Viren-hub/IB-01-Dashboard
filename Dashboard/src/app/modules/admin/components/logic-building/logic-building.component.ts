@@ -24,7 +24,7 @@ export class LogicBuildingComponent implements OnInit {
 
   
   userData: any;
-singleData:any=null;
+
 userId:any;
 invalid: any;
   @ViewChild('myForm')
@@ -94,6 +94,56 @@ onFileSelected(event: any){
   this.selectedFile= <File>event.target.files[0];
   
 }
+// ***********************************************************************************************************************
+
+//Aniket's Changes in LB code
+
+singleData:any;
+
+
+saveChange=new FormGroup({
+id:new FormControl(''),
+name:new FormControl(''),
+mobile:new FormControl(''),
+email:new FormControl(''),
+pending_fees:new FormControl(''),
+paid_fees:new FormControl('')
+});
+
+getVal(value:any){
+console.log(value);
+this.http.getSingleDataLB(value).subscribe((data :any)=>{
+  console.log(data) 
+  this.singleData=data.data;
+
+  console.log(this.singleData[0].Mob);
+  this.saveChange=new FormGroup({
+    id:new FormControl(''),
+    name:new FormControl(this.singleData[0].Name),
+    mobile:new FormControl(this.singleData[0].Mob),
+    email:new FormControl(this.singleData[0].Email),
+    pending_fees:new FormControl(this.singleData[0].PendingFees),
+    paid_fees:new FormControl(this.singleData[0].Paidfees)
+  });
+
+})
+
+}
+
+saveChanges(id:any){
+  console.log(id);
+  this.saveChange.value.id=id;
+  console.log(this.saveChange.value);
+  this.http.updateChangesLB(id,this.saveChange.value).subscribe((result:any)=>
+  {
+    console.log(result);  
+  });
+   
+   window.location.reload();
+}
+
+
+// ************************************************************************************************************************
 
 ngOnInit(): void { 
 //   this['rs'].getUsers().subscribe((Response: any) =>{

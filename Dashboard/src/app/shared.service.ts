@@ -23,12 +23,28 @@ export class SharedService {
     let url="http://localhost:3000/internship";
     return this.http.get(url);
   }
+
+  /////////////////////////////////////////////////////////////////////////////
+  
   getSingleData(uuid:any){
     // this.userId=val;
     let url=`http://localhost:3000/ppc/${uuid}`;
     return this.http.get(url);
     
   }
+  getSingleDataLB(uuid:any){
+    // this.userId=val;
+    let url=`http://localhost:3000/logic_building/${uuid}`;
+    return this.http.get(url);
+    
+  }
+  getSingleDataIntern(uuid:any){
+    // this.userId=val;
+    let url=`http://localhost:3000/internship/${uuid}`;
+    return this.http.get(url); 
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
   createIntern(data:any){
     let url="http://localhost:3000/internship";
     return this.http.post(`${url}`,data);
@@ -54,11 +70,26 @@ export class SharedService {
   return this.http.post(`${url}`,data5);
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////
+  
   updateChanges(id:any,updateData:any){
 
     let url=`http://localhost:3000/ppc/${id}`;
     return this.http.post(`${url}`,updateData);
   }
+  
+  updateChangesLB(id:any,updateData:any){
+
+    let url=`http://localhost:3000/logic_building/${id}`;
+    return this.http.post(`${url}`,updateData);
+  }
+  updateChangesIntern(id:any,updateData:any){
+
+    let url=`http://localhost:3000/internship/${id}`;
+    return this.http.post(`${url}`,updateData);
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////
 
   
 }

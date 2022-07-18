@@ -27,7 +27,7 @@ export class InternshipComponent implements OnInit {
 
   
   userData: any;
-singleData:any=null;
+
 userId:any;
 invalid: any;
   @ViewChild('myForm')
@@ -86,6 +86,56 @@ alertSuccess()
  }
  
 }
+
+// ****************************************************************************************************************
+
+// Aniket's changes in Internship 
+
+singleData:any;
+
+saveChange=new FormGroup({
+id:new FormControl(''),
+name:new FormControl(''),
+mobile:new FormControl(''),
+email:new FormControl(''),
+pending_fees:new FormControl(''),
+paid_fees:new FormControl('')
+});
+
+getVal(value:any){
+console.log(value);
+this.http.getSingleDataIntern(value).subscribe((data :any)=>{
+  console.log(data) 
+  this.singleData=data.data;
+
+  console.log(this.singleData[0].Mobile);
+  this.saveChange=new FormGroup({
+    id:new FormControl(''),
+    name:new FormControl(this.singleData[0].Name),
+    mobile:new FormControl(this.singleData[0].Mobile),
+    email:new FormControl(this.singleData[0].Email),
+    pending_fees:new FormControl(this.singleData[0].Pending_Fees),
+    paid_fees:new FormControl(this.singleData[0].Paid_Fees)
+  });
+
+})
+
+}
+
+saveChanges(id:any){
+  console.log(id);
+  this.saveChange.value.id=id;
+  console.log(this.saveChange.value);
+  this.http.updateChangesIntern(id,this.saveChange.value).subscribe((result:any)=>
+  {
+    console.log(result);  
+  });
+   
+   window.location.reload();
+}
+
+// **********************************************************************************************************************
+
 onUpload(){
   const fd= new FormData();
   fd.append('image',this['selectedFile'],this.selectedFile.name);

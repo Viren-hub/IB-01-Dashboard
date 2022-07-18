@@ -140,10 +140,12 @@ app.post('/internship', (req, res) => {
         server.close()
     })
 })
-// **********************************************************************************************************************************
 
+
+//***************************************************************************************************************************
 //   Aniket's updation
 
+// PPC update data
 app.post('/ppc/:id', (req, res) => {
     let id = req.params.id;
     
@@ -175,8 +177,105 @@ app.post('/ppc/:id', (req, res) => {
     })
 })
 
+// Logic Building Update Data
 
-// **********************************************************************************************************************************
+app.get('/logic_building/:P_Id', (req, res) => {
+    let uid = req.params.P_Id;
+    let qr = `SELECT * FROM logic_building where Id=${uid}`;
+
+    db.query(qr, (err, result) => {
+        if (err) { console.log(err) } else if (result.length > 0) {
+            res.send({
+                massage: "all LB Data",
+                data: result
+            })
+        }
+    })
+});
+
+
+app.post('/logic_building/:id', (req, res) => {
+    let id = req.params.id;
+    
+    let P_Name = req.body.name;
+    let P_Email = req.body.email;
+    let P_Mobile = req.body.mobile;
+    let P_PendingFees = req.body.pending_fees;
+    let P_PaidFees = req.body.paid_fees;
+    
+    let qr = `update logic_building set Name='${P_Name}',Email='${P_Email}',Mob='${P_Mobile}',
+    PendingFees='${P_PendingFees}',Paidfees='${P_PaidFees}'
+     where Id=${id}`;
+    
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        if (result) {
+            alert(`Your Data of ID ${id} updated Successfully..!`)
+            res.send({
+                message: 'Data updated'
+            
+            })
+        }
+         else {
+            res.send({
+                message: 'wrong...'
+            })
+        }
+    })
+})
+
+// Internship Update Data
+
+app.get('/internship/:P_Id', (req, res) => {
+    let uid = req.params.P_Id;
+    let qr = `SELECT * FROM internship where Id=${uid}`;
+
+    db.query(qr, (err, result) => {
+        if (err) { console.log(err) } else if (result.length > 0) {
+            res.send({
+                massage: "all Internship Data",
+                data: result
+            })
+        }
+    })
+});
+
+app.post('/internship/:id', (req, res) => {
+    let id = req.params.id;
+    
+    let P_Name = req.body.name;
+    let P_Email = req.body.email;
+    let P_Mobile = req.body.mobile;
+    let P_PendingFees = req.body.pending_fees;
+    let P_PaidFees = req.body.paid_fees;
+    
+    let qr = `update internship set Name='${P_Name}',Email='${P_Email}',Mobile='${P_Mobile}',
+    Pending_Fees='${P_PendingFees}',Paid_Fees='${P_PaidFees}'
+     where Id=${id}`;
+    
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        if (result) {
+            alert(`Your Data of ID ${id} updated Successfully..!`)
+            res.send({
+                message: 'Data updated'
+            
+            })
+        }
+         else {
+            res.send({
+                message: 'wrong...'
+            })
+        }
+    })
+})
+
+//***************************************************************************************************************************
+
 //post Data PPC
 
 app.post('/ppc/post', (req, res) => {
@@ -211,9 +310,8 @@ app.post('/ppc/post', (req, res) => {
     })
 })
 
+
 //post Data Logic_Building
-
-
 
 app.post('/logic_building', (req, res) => {
 
