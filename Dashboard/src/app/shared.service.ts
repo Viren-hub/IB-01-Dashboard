@@ -54,5 +54,11 @@ export class SharedService {
   return this.http.post(`${url}`,data5);
   }
 
+  updateChanges(id:any,updateData:any){
+
+    let url=`http://localhost:3000/ppc/${id}`;
+    return this.http.post(`${url}`,updateData);
+  }
+
   
 }

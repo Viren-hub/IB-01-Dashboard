@@ -213,9 +213,7 @@ app.post('/ppc/post', (req, res) => {
 
 //post Data Logic_Building
 
-app.listen(3000, () => {
-    console.log("server listen on port 3000")
-})
+
 
 app.post('/logic_building', (req, res) => {
 
