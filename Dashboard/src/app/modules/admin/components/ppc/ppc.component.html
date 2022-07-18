@@ -118,47 +118,50 @@
 <!-- ****************************************************************************************** -->
 <!-- modal for updating and displaying specific student info -->
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Student Information</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <h3>ID </h3>
-                    <h3>Name </h3>
-                    <h3>Mobile Number </h3>
-                    <h3>Email ID </h3>
-                    <h3>Pending Fees</h3>
-                    <h3>Paid Fees</h3>
-                  </div>
-                  
-                  <div class="col">
-                    <h3>{{singleData && singleData[0].P_Id}}</h3>
-                    <h3>{{singleData && singleData[0].P_Name}}</h3>
-                    <h3>{{singleData && singleData[0].P_Mobile}}</h3>
-                    <h3>{{singleData && singleData[0].P_Email}}</h3>
-                    <h3>{{singleData && singleData[0].P_PendingFees}}</h3>
-                    <h3>{{singleData && singleData[0].P_PaidFees}}</h3>
-                  </div>
+        <form [formGroup]="saveChange" (ngSubmit)="saveChanges(singleData && singleData[0].P_Id)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Student Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update user</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col">
+                                <h3>ID </h3>
+                                <h3>Name </h3>
+                                <h3>Mobile Number </h3>
+                                <h3>Email ID </h3>
+                                <h3>Pending Fees</h3>
+                                <h3>Paid Fees</h3>
+                            </div>
+                            <div class="col">
+                                <h3 >{{singleData && singleData[0].P_Id}}</h3>
+                                <input class="my-2" type="text" value="{{singleData && singleData[0].P_Name}}" formControlName="name">
+                                <input class="my-2" type="text" value="{{singleData && singleData[0].P_Mobile}}" formControlName="mobile">
+                                <input class="my-2" type="text" value="{{singleData && singleData[0].P_Email}}" formControlName="email">
+                                <input class="my-2" type="text" value="{{singleData && singleData[0].P_PendingFees}}" formControlName="pending_fees">
+                                <input class="my-2" type="text" value="{{singleData && singleData[0].P_PaidFees}}" formControlName="paid_fees">
+                                
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" data-toggle="modal" data-target="#exampleModal1" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 <!-- ****************************************************************************************** -->
 
 
@@ -184,10 +187,10 @@
     <table class="table text-center table-striped">
         <thead>
             <tr>
-                <th scope="col">ID  </th>
-                <th scope="col">Name  </th>
+                <th scope="col">ID </th>
+                <th scope="col">Name </th>
                 <th scope="col">Mobile No. </th>
-                <th scope="col">Email  </th>
+                <th scope="col">Email </th>
                 <th (click)="sort('Pending_fees')" scope="col">Pending Fees &nbsp;<i class="fa fa-sort"></i> </th>
                 <th (click)="sort('Paid_fees')" scope="col">Paid Fees &nbsp;<i class="fa fa-sort"></i> </th>
             </tr>
@@ -195,15 +198,16 @@
         <tbody>
             <tr *ngFor="let user of userAllData | orderBy: key: reverse | paginate: {itemsPerPage: 6, currentPage:p};">
 
-                
-                <td scope="ID" id="id1" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;" >{{user.P_Id}}</td>
-            
+
+                <td scope="ID" id="id1" data-toggle="modal" data-target="#exampleModal1" style="text-decoration: none;"
+                    (click)="getVal(user.P_Id)">{{user.P_Id}}</td>
+
                 <td scope="Name">{{user.P_Name}}</td>
                 <td scope="Mobile No.">{{user.P_Mobile}}</td>
                 <td scope="Email">{{user.P_Email}}</td>
                 <td scope="Pending Fees">{{user.P_PendingFees}}</td>
                 <td scope="Paid Fees">{{user.P_PaidFees}}</td>
             </tr>
-        </tbody>      
+        </tbody>
     </table>
     <pagination-controls (pageChange)="p =$event"></pagination-controls>

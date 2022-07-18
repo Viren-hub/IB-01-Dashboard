@@ -2,6 +2,7 @@ import { SharedService } from 'src/app/shared.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm }  from '@angular/forms';
 import swal from 'sweetalert2';
+
 import { Observable, switchAll } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { getValueInRange } from '@ng-bootstrap/ng-bootstrap/util/util';
@@ -19,12 +20,9 @@ export class PpcComponent implements OnInit {
   // name:any;
 
   p: number = 1;
-
-  
   userData: any;
-singleData:any;
-userId:any;
-invalid: any;
+  userId:any;
+  invalid: any;
   @ViewChild('myForm')
   myForm!: NgForm;
   
@@ -41,17 +39,53 @@ constructor(private http:SharedService){
     })
 }
 
-// ***********************************************************************************************************
-  getVal(value:any){
+// ************************************************************************************************************************************
+  //Aniket's Changes in code
+  
+    singleData:any;
+    // saveChange:any;
+
+    saveChange=new FormGroup({
+    id:new FormControl(''),
+    name:new FormControl(''),
+    mobile:new FormControl(''),
+    email:new FormControl(''),
+    pending_fees:new FormControl(''),
+    paid_fees:new FormControl('')
+  });
+
+    getVal(value:any){
     console.log(value);
     this.http.getSingleData(value).subscribe((data :any)=>{
       this.singleData=data.data;
       console.log(this.singleData[0].P_Mobile);
+      this.saveChange=new FormGroup({
+        id:new FormControl(''),
+        name:new FormControl(this.singleData[0].P_Name),
+        mobile:new FormControl(this.singleData[0].P_Mobile),
+        email:new FormControl(this.singleData[0].P_Email),
+        pending_fees:new FormControl(this.singleData[0].P_PendingFees),
+        paid_fees:new FormControl(this.singleData[0].P_PaidFees)
+      });
 
     })
 
   }
-// ***********************************************************************************************************
+
+  saveChanges(id:any){
+    console.log(id);
+    this.saveChange.value.id=id;
+    console.log(this.saveChange.value);
+    this.http.updateChanges(id,this.saveChange.value).subscribe((result:any)=>
+    {
+      console.log(result);  
+    });
+     
+     window.location.reload();
+  }
+
+
+// ***************************************************************************************************************************************
 
 errorMassage:any;
 studentForm= new FormGroup({

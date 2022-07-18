@@ -2,11 +2,12 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
-
 const app = express();
-
 app.use(cors());
 app.use(bodyparser.json());
+
+let alert=require('alert');
+
 
 //database connection
 const db = mysql.createConnection({
@@ -30,9 +31,10 @@ db.connect(err => {
 
 //fetch data from server
 //here "ppc" is the table name which is in databse
-app.get('/ppc/:P_id', (req, res) => {
-    let uid = req.params.P_id;
-    let qr = `SELECT * FROM ppc where P_id=${uid}`;
+
+app.get('/ppc/:P_Id', (req, res) => {
+    let uid = req.params.P_Id;
+    let qr = `SELECT * FROM ppc where P_Id=${uid}`;
 
     db.query(qr, (err, result) => {
         if (err) { console.log(err) } else if (result.length > 0) {
@@ -48,7 +50,7 @@ app.get('/ppc/:P_id', (req, res) => {
 app.get('/ppc', (req, res) => {
     // let uid = req.params.P_id;
     let qr = `SELECT * FROM ppc`;
-
+    
     db.query(qr, (err, result) => {
         if (err) { console.log(err) } else if (result.length > 0) {
             res.send({
@@ -106,6 +108,8 @@ app.get('/Rawdata/:id', (req, res) => {
 
 //post Data of Internship
 
+
+
 app.post('/internship', (req, res) => {
     console.log(req.body, "created Data");
     let ID = req.body.ID;
@@ -136,7 +140,43 @@ app.post('/internship', (req, res) => {
         server.close()
     })
 })
+// **********************************************************************************************************************************
 
+//   Aniket's updation
+
+app.post('/ppc/:id', (req, res) => {
+    let id = req.params.id;
+    
+    let P_Name = req.body.name;
+    let P_Email = req.body.email;
+    let P_Mobile = req.body.mobile;
+    let P_PendingFees = req.body.pending_fees;
+    let P_PaidFees = req.body.paid_fees;
+    
+    let qr = `update ppc set P_Name='${P_Name}',P_Email='${P_Email}',P_Mobile='${P_Mobile}',P_PendingFees='${P_PendingFees}',
+    P_PaidFees='${P_PaidFees}' where P_Id=${id}`;
+    
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        if (result) {
+            alert(`Your Data of ID ${id} updated Successfully..!`)
+            res.send({
+                message: 'Data updated'
+            
+            })
+        }
+         else {
+            res.send({
+                message: 'wrong...'
+            })
+        }
+    })
+})
+
+
+// **********************************************************************************************************************************
 //post Data PPC
 
 app.post('/ppc/post', (req, res) => {
@@ -149,7 +189,6 @@ app.post('/ppc/post', (req, res) => {
     let P_PaidFees = req.body.P_PaidFees;
     let P_Image = req.body.P_Image;
 
-
     let qr = `insert into ppc(P_Id,P_Name,P_Email,P_Mobile,P_PendingFees, P_PaidFees,P_Image)
                 values('${P_Id}','${P_Name}','${P_Email}','${P_Mobile}','${P_PendingFees}','${P_PaidFees}','${P_Image}')) `
 
@@ -160,7 +199,7 @@ app.post('/ppc/post', (req, res) => {
         }
         if (result.length > 0) {
             res.send({
-                massage: 'Data Insertd'
+                massage: 'Data Inserted'
             })
 
         } else {
@@ -173,11 +212,6 @@ app.post('/ppc/post', (req, res) => {
 })
 
 //post Data Logic_Building
-
-app.listen(3000, () => {
-    console.log("server listen on port 3000")
-})
-
 app.post('/logicbuilding', (req, res) => {
 
     let Id = req.body.Id;
@@ -207,4 +241,8 @@ app.post('/logicbuilding', (req, res) => {
         }
         server.close()
     })
+})
+
+app.listen(3000, () => {
+    console.log("server listen on port 3000")
 })
